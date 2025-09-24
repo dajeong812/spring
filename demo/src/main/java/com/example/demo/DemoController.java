@@ -15,4 +15,8 @@ public class DemoController{
     return "about_detailed";
     }
 
+    @GetMapping("/return_index")
+    public String return_index() {
+    return "index";
+    }
 }

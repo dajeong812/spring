@@ -90,7 +90,6 @@
         time: 2000
     });
 
-
     // Skills
     $('.skill').waypoint(function () {
         $('.progress .progress-bar').each(function () {
