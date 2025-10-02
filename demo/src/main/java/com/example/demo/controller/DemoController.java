@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,13 +44,22 @@ public class DemoController {
     }
 
     // DB 테스트 매핑
-    @GetMapping("/testdb")
-    public String getAllTestDBs(Model model) {
-        TestDB test = testService.findByName("홍길동");
-        model.addAttribute("data4", test);
-        System.out.println("데이터 출력 디버그 : " + test);
-        return "testdb";
-    }
+@GetMapping("/testdb")
+public String getAllTestDBs(Model model) {
+    List<TestDB> testList = new ArrayList<>();
+
+    // DB에 있는 이름 그대로 넣어야 함
+    TestDB user1 = testService.findByName("홍길동");
+    TestDB user2 = testService.findByName("아저씨");
+    TestDB user3 = testService.findByName("꾸러기");
+
+    if(user1 != null) testList.add(user1);
+    if(user2 != null) testList.add(user2);
+    if(user3 != null) testList.add(user3);
+
+    model.addAttribute("dataList", testList);
+    return "testdb";
+}
 
     // @GetMapping("/article_list")
     // public String article_list() {

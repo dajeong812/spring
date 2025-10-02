@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>데이터베이스 테스트</title>
+    <title>데이터베이스 테스트</title>
 </head>
 <body>
 <h1>User List</h1>
-<p>아이디(기본키) : <span th:text="${data4.id}"></span></p>
-<p>이름 : <span th:text="${data4.name}"></span></p>
+
+<!-- dataList 안의 모든 유저를 반복해서 출력 -->
+<div th:each="data : ${dataList}">
+    <p>아이디 : <span th:text="${data.id}"></span></p>
+    <p>이름 : <span th:text="${data.name}"></span></p>
+</div>
+
+</div>
+
 </body>
 </html>
+
+
