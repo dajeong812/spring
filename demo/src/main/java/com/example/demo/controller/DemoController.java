@@ -61,9 +61,9 @@ public String getAllTestDBs(Model model) {
     return "testdb";
 }
 
-    // @GetMapping("/article_list")
-    // public String article_list() {
-    // return "article_list";
-    // }
+    @GetMapping("/article_list")
+    public String article_list() {
+    return "article_list";
+    }
 
 }
