@@ -8,7 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import static org.springframework.security.config.Customizer.withDefaults;
+
 
 @Configuration            // 스프링 설정 클래스
 @EnableWebSecurity        // 스프링 시큐리티 활성화
@@ -27,7 +27,8 @@ public class SecurityConfig {
             )
 
             // CSRF 기본 설정 (폼 전송 사용 시 유지)
-            .csrf(withDefaults())
+            //.csrf(withDefaults())
+            .csrf(csrf -> csrf.disable())
 
             // 세션 관리
             .sessionManagement(session -> session
