@@ -1,13 +1,17 @@
 package com.example.demo.model.service;
 
-import lombok.*; // 어노테이션 자동 생성
-//import com.example.demo.model.domain.Article;
+import lombok.*;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import com.example.demo.model.domain.Board;
 
-@NoArgsConstructor // 기본 생성자 추가
-@AllArgsConstructor // 모든 필드 값을 파라미터로 받는 생성자 추가
-@Data // getter, setter, toString, equals 등 자동 생성
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class AddArticleRequest {
+
     private String title;
     private String content;
     private String user;
@@ -15,15 +19,22 @@ public class AddArticleRequest {
     private String newdate;
     private String likec;
 
-    public Board toEntity(){ // Article 객체 생성
+
+    public Board toEntity() {
+
+        // "MM월dd일" 형식으로 오늘 날짜 만들기
+        String today = LocalDate.now()
+                .format(DateTimeFormatter.ofPattern("MM월dd일"));
+
         return Board.builder()
-            .title(title)
-            .content(content)
-            .user(user)
-            .count(count)
-            .newdate(newdate)
-            .likec(likec)
-            .build();
-           
+                .title(title)
+                .content(content)
+                .user(user)     // 세션에서 받아오는 email
+
+                .count("0")     // 기본 조회수
+                .likec("0")     // 기본 좋아요
+                .newdate(today) // 오늘 날짜
+
+                .build();
     }
 }

@@ -7,6 +7,7 @@ import lombok.Data;
 @Table(name = "testdb") // 테이블 이름은 testdb
 @Data // set/get/tostring 등 필수 어노테이션 자동 생성
 public class TestDB {
+    
     @Id // 해당 변수가 PK
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 값이 없어도 자동으로 할당
     private Long id;
